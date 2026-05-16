@@ -1279,23 +1279,36 @@ export default function App() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(124,92,252,0.06)_0%,transparent_60%)] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-secondary mb-4 block">
-                COMMON QUESTIONS
-              </span>
-              <h2 className="font-syne text-4xl font-bold text-text-primary">Everything you need to know.</h2>
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 items-start">
+              {/* Left Column: Sticky Header */}
+              <div className="lg:sticky lg:top-32 flex flex-col items-start text-left">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-secondary mb-4 block">
+                  COMMON QUESTIONS
+                </span>
+                <h2 className="font-syne text-4xl md:text-[36px] font-bold text-text-primary mb-6 leading-tight">
+                  Everything you need to know.
+                </h2>
+                <p className="text-text-secondary font-sans leading-relaxed mb-8 max-w-sm">
+                  Can't find what you're looking for? Our support team responds within 2 hours.
+                </p>
+                
+                <div className="flex flex-col items-start group">
+                  <a 
+                    href="#" 
+                    className="flex items-center gap-2 text-secondary font-bold text-sm hover:text-text-primary transition-all duration-300 py-2 border-b-2 border-secondary/0 hover:border-secondary/30"
+                  >
+                    Chat with us <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <div className="w-[1px] h-[60px] bg-gradient-to-b from-primary to-transparent rounded-full mt-6 ml-4" />
+                </div>
+              </div>
 
-            <div className="max-w-2xl mx-auto space-y-2">
-              {faqs.map((faq, i) => (
-                <FAQItem key={i} {...faq} index={i} />
-              ))}
-            </div>
-
-            <div className="mt-12 text-center">
-              <p className="text-text-secondary text-sm">
-                Still have questions? <a href="#" className="text-secondary font-bold hover:underline decoration-2 underline-offset-4 decoration-secondary/30 transition-all">Chat with us →</a>
-              </p>
+              {/* Right Column: FAQ Items */}
+              <div className="space-y-2 w-full">
+                {faqs.map((faq, i) => (
+                  <FAQItem key={i} {...faq} index={i} />
+                ))}
+              </div>
             </div>
           </div>
         </section>
