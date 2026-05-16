@@ -10,6 +10,12 @@ import fluxImg from './assets/flux.png';
 import ideogramImg from './assets/ideogram.png';
 import grokImg from './assets/grok.png';
 import libraryImg from './assets/library.png';
+import hildaImg from './assets/hilda.png';
+import mattImg from './assets/matt.png';
+import dariusImg from './assets/darius.png';
+import priyaImg from './assets/priya.png';
+import jamieImg from './assets/jamie.png';
+import bradyImg from './assets/brady.png';
 
 
 
@@ -111,12 +117,12 @@ const showcaseTools = [
 ];
 
 const testimonials = [
-  { name: 'Hilda S.', role: 'Online Course Creator', quote: 'I cancelled 6 subscriptions the week I joined PromptEdit. I use it every single day now.', color: 'bg-primary' },
-  { name: 'Matt L.', role: 'ContentCreator.com', quote: 'My videos wouldn\'t look half as good without this. I lean on it for every edit I do.', color: 'bg-secondary' },
-  { name: 'Darius K.', role: 'Ad Creative Director', quote: 'Kling AI through PromptEdit is insane. The video quality blew my entire team away.', color: 'bg-indigo-500' },
-  { name: 'Priya M.', role: 'TikTok Creator, 2.1M followers', quote: 'The fact that I can access Veo AND ElevenLabs from one dashboard, one credit balance — game changer.', color: 'bg-fire' },
-  { name: 'Jamie R.', role: 'YouTube Shorts Creator', quote: 'Nano Banana for short-form content is stupid fast. I\'m publishing twice as much.', color: 'bg-purple-500' },
-  { name: 'Brady H.', role: 'ContentCreator.com student', quote: 'Honestly the Content Creator Templates Library alone is worth it. But the AI tools are what keep me subscribed.', color: 'bg-blue-500' },
+  { name: 'Hilda S.', role: 'Online Course Creator', quote: 'I cancelled 6 subscriptions the week I joined PromptEdit. I use it every single day now.', image: hildaImg },
+  { name: 'Matt L.', role: 'ContentCreator.com', quote: 'My videos wouldn\'t look half as good without this. I lean on it for every edit I do.', image: mattImg },
+  { name: 'Darius K.', role: 'Ad Creative Director', quote: 'Kling AI through PromptEdit is insane. The video quality blew my entire team away.', image: dariusImg },
+  { name: 'Priya M.', role: 'TikTok Creator, 2.1M followers', quote: 'The fact that I can access Veo AND ElevenLabs from one dashboard, one credit balance — game changer.', image: priyaImg },
+  { name: 'Jamie R.', role: 'YouTube Shorts Creator', quote: 'Nano Banana for short-form content is stupid fast. I\'m publishing twice as much.', image: jamieImg },
+  { name: 'Brady H.', role: 'ContentCreator.com student', quote: 'Honestly the Content Creator Templates Library alone is worth it. But the AI tools are what keep me subscribed.', image: bradyImg },
 ];
 
 const faqs = [
@@ -1127,8 +1133,8 @@ export default function App() {
                   className="p-8 rounded-3xl bg-elevated border border-white/5 hover:border-white/10 transition-colors"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className={`w-12 h-12 rounded-full ${t.color} flex items-center justify-center font-bold text-white shadow-lg`}>
-                      {t.name.split(' ')[0][0]}{t.name.split(' ')[1]?.[0] || ''}
+                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 shadow-lg">
+                      <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="text-text-primary font-bold text-sm">{t.name}</h4>
