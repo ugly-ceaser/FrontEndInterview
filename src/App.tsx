@@ -917,11 +917,16 @@ export default function App() {
                 <p className="text-text-primary font-medium">
                   At <span className="text-primary font-bold text-lg">{generations}</span> generations/week, you'd spend ~<span className="text-text-primary font-bold">${(generations * 4 * 0.10).toFixed(2)}</span>/month on credits.
                 </p>
-                <p className="text-secondary text-sm font-bold">
-                  {generations >= 40 
-                    ? `The Subscription plan saves you ~$${(generations * 4 * 0.10 - 39).toFixed(2)} vs paying per credit.`
-                    : `The "Save on Credits" plan is your best starting point.`}
-                </p>
+                <div className="flex flex-col items-center">
+                  <p className="text-secondary text-sm font-bold">
+                    {generations >= 40 
+                      ? `The Subscription plan saves you ~$${(generations * 4 * 0.10 - 39).toFixed(2)} vs paying per credit.`
+                      : `The "Save on Credits" plan is your best starting point.`}
+                  </p>
+                  <p className="text-secondary text-[11px] italic font-medium opacity-90 mt-1">
+                    You save ~$153/month vs buying separately
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -931,11 +936,14 @@ export default function App() {
               <motion.div
                 animate={isSubscriptionRecommended ? { scale: [1, 1.02, 1] } : {}}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className={`relative flex flex-col p-8 md:p-10 rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/5 border-2 transition-all duration-500 order-first md:order-last ${
+                style={{ 
+                  background: 'linear-gradient(to bottom, rgba(124, 92, 252, 0.12), rgba(0, 240, 200, 0.06))'
+                }}
+                className={`relative flex flex-col p-8 md:p-10 rounded-3xl border-2 transition-all duration-500 order-first md:order-last ${
                   isSubscriptionRecommended ? 'border-primary shadow-glow-violet' : 'border-primary/20 opacity-90 hover:opacity-100'
                 }`}
               >
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] shadow-glow-violet z-20">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-2 rounded-full bg-primary text-text-primary text-[13px] font-bold uppercase tracking-widest shadow-glow-violet z-20 flex items-center gap-2">
                   ⭐ Most Popular
                 </div>
 
@@ -1008,7 +1016,7 @@ export default function App() {
                   ))}
                 </ul>
 
-                <button className="w-full py-4 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-text-primary transition-all duration-300">
+                <button className="w-full py-4 rounded-full bg-elevated border border-primary text-primary font-bold hover:bg-primary/5 transition-all duration-300">
                   Claim Credits
                 </button>
               </motion.div>
