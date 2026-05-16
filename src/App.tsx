@@ -3,19 +3,11 @@ import { motion, AnimatePresence, useScroll, useTransform, animate, useMotionVal
 import { Menu, X, ChevronRight, ChevronDown, Check, Zap, ShieldCheck, Wallet, Star, Plus, Youtube, Instagram, Twitter } from 'lucide-react';
 
 import heroImg from './assets/hero.png';
-import veoImg from './assets/veo.png';
-import klingImg from './assets/kling.png';
-import nanobananaImg from './assets/nanobanana.png';
-import fluxImg from './assets/flux.png';
-import ideogramImg from './assets/ideogram.png';
-import grokImg from './assets/grok.png';
 import libraryImg from './assets/library.png';
-import hildaImg from './assets/hilda.png';
-import mattImg from './assets/matt.png';
-import dariusImg from './assets/darius.png';
-import priyaImg from './assets/priya.png';
-import jamieImg from './assets/jamie.png';
-import bradyImg from './assets/brady.png';
+
+import { showcaseTools } from './data/tools';
+import { testimonials } from './data/testimonials';
+import { faqs } from './data/faqs';
 
 
 
@@ -102,39 +94,6 @@ const FadeDivider = ({ from = "bg-void", to = "bg-surface" }: { from?: string, t
 );
 
 
-const showcaseTools = [
-  { id: 1, name: 'Veo', category: 'Video', icon: '🎬', desc: 'Google DeepMind text-to-video', tags: ['Text-to-Video', 'Cinematic'], price: '0.12', image: veoImg },
-  { id: 2, name: 'Kling', category: 'Video', icon: '🦙', desc: 'Realistic motion video gen', tags: ['High-Fidelity', 'Pro'], price: '0.15', image: klingImg },
-  { id: 3, name: 'Nano Banana Pro', category: 'Video', icon: '🍌', desc: 'Fast short-form video', tags: ['Social', 'Fast'], price: '0.08', image: nanobananaImg },
-  { id: 4, name: 'Flux', category: 'Image', icon: '🖼️', desc: 'Ultra-realistic image gen', tags: ['Stable Diffusion', 'Art'], price: '0.05', image: fluxImg },
-  { id: 5, name: 'Ideogram', category: 'Image', icon: '🎨', desc: 'Text-in-image specialist', tags: ['Typography', 'Layout'], price: '0.05', image: ideogramImg },
-  { id: 6, name: 'Grok Aurora', category: 'Image', icon: '💎', desc: 'Creative image gen', tags: ['X.ai', 'Modern'], price: '0.04', image: grokImg },
-  { id: 7, name: 'ElevenLabs', category: 'Audio', icon: '🔊', desc: 'AI voice cloning & voiceovers', tags: ['Voice', 'HQ'], price: '0.02' },
-  { id: 8, name: 'Suno', category: 'Audio', icon: '🎵', desc: 'AI music generation', tags: ['Music', 'Full Songs'], price: '0.05' },
-  { id: 9, name: 'HeyGen', category: 'Audio', icon: '🎭', desc: 'AI avatar video', tags: ['Avatar', 'Lip-sync'], price: '0.50' },
-  { id: 10, name: 'Magic Refine', category: 'Plugins', icon: '✂️', desc: 'Auto-enhance video quality', tags: ['Upscale', 'AI'], price: '0.05' },
-  { id: 11, name: 'Subtitle Gen', category: 'Plugins', icon: '💬', desc: 'Dynamic burned-in captions', tags: ['Social', 'Fast'], price: '0.01' },
-];
-
-const testimonials = [
-  { name: 'Hilda S.', role: 'Online Course Creator', quote: 'I cancelled 6 subscriptions the week I joined PromptEdit. I use it every single day now.', image: hildaImg },
-  { name: 'Matt L.', role: 'ContentCreator.com', quote: 'My videos wouldn\'t look half as good without this. I lean on it for every edit I do.', image: mattImg },
-  { name: 'Darius K.', role: 'Ad Creative Director', quote: 'Kling AI through PromptEdit is insane. The video quality blew my entire team away.', image: dariusImg },
-  { name: 'Priya M.', role: 'TikTok Creator, 2.1M followers', quote: 'The fact that I can access Veo AND ElevenLabs from one dashboard, one credit balance — game changer.', image: priyaImg },
-  { name: 'Jamie R.', role: 'YouTube Shorts Creator', quote: 'Nano Banana for short-form content is stupid fast. I\'m publishing twice as much.', image: jamieImg },
-  { name: 'Brady H.', role: 'ContentCreator.com student', quote: 'Honestly the Content Creator Templates Library alone is worth it. But the AI tools are what keep me subscribed.', image: bradyImg },
-];
-
-const faqs = [
-  { q: "What is PromptEdit.com?", a: "A pay-per-use AI marketplace giving creators access to 20+ AI generation tools including Veo, Kling, Nano Banana, ElevenLabs, and Suno — from one dashboard, one credit balance." },
-  { q: "How do AI credits work?", a: "Credits are like fuel. You buy them once and spend them across any tool. 1 image generation might cost 5 credits. 1 video generation might cost 40. You see the cost before you generate. Credits never expire." },
-  { q: "Can I use what I create commercially?", a: "Yes. Everything generated through PromptEdit is yours to use commercially, including in client work, YouTube videos, ads, and courses." },
-  { q: "Is there a difference in quality vs going direct?", a: "No. PromptEdit connects directly to the official APIs of each model. You get identical quality to the source platform." },
-  { q: "What happens to my templates if I cancel?", a: "You keep everything you downloaded. Your generated AI content is yours permanently. Only ongoing access to the library is paused." },
-  { q: "Will the templates work in my editing platform?", a: "Yes. All templates are compatible with Adobe Premiere Pro, DaVinci Resolve, Final Cut Pro, and CapCut." },
-  { q: "Can I cancel anytime?", a: "Absolutely. No lock-in, no questions asked. Cancel from your dashboard in one click." },
-  { q: "Do you add new AI tools regularly?", a: "Yes — we integrate new models as they launch. If a tool you need isn't there, you can request it." },
-];
 
 const Waveform = () => (
   <div className="flex items-center justify-center gap-1.5">
