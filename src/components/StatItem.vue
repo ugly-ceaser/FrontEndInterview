@@ -32,10 +32,7 @@ const formatted = computed(() => {
 
 const hasAnimated = ref(false);
 
-onMounted(() => {
-  const unwatch = useElementVisibility(target);
-  // We want to trigger when it becomes visible
-});
+
 
 // Watch for visibility to trigger animation
 import { watch } from 'vue';

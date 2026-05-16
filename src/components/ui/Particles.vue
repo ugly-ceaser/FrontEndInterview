@@ -38,13 +38,13 @@ const getParticleTransition = () => {
       v-motion
       :initial="{ y: 0, opacity: 0.5 }"
       :enter="{ y: -20, opacity: 0.7 }"
-      :variants="{
+      :variants="({
         loop: {
           y: [0, -20, 0],
           opacity: [0.3, 0.7, 0.3],
           transition: getParticleTransition()
         }
-      }"
+      } as any)"
     />
   </div>
 </template>

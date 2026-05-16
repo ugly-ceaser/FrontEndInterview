@@ -102,7 +102,7 @@ const navLinks = [
       
       <div class="flex-1 flex flex-col justify-center gap-8 px-10">
         <a
-          v-for="(link, i) in navLinks"
+          v-for="link in navLinks"
           :key="link.name"
           :href="link.href"
           @click="isMobileMenuOpen = false"
