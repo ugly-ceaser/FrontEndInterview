@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed} from 'vue';
 import { useTransition, TransitionPresets, useElementVisibility } from '@vueuse/core';
 
 const props = withDefaults(defineProps<{
