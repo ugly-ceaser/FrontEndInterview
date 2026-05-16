@@ -677,22 +677,37 @@ export default function App() {
               initial={{ y: 60, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
-              className="mt-24 w-full max-w-6xl relative"
+              className="mt-12 w-full max-w-6xl relative px-4"
             >
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-surface group">
-                <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent z-10 opacity-60" />
-                <img 
-                  src={heroImg} 
-                  alt="PromptEdit Dashboard" 
-                  className="w-full h-auto scale-[1.01] group-hover:scale-[1.03] transition-transform duration-1000"
-                />
-                
-                {/* Floating UI Elements on top of image */}
-                <div className="absolute top-10 left-10 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hidden md:block">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-secondary animate-pulse" />
-                    <span className="text-[10px] font-bold text-text-primary uppercase tracking-widest">Active Generation: Kling v2</span>
+              {/* Active Generation Badge Pill (Overlapping) */}
+              <div className="absolute -top-3 left-10 z-30 px-3 py-1.5 rounded-full bg-surface border border-white/10 backdrop-blur-xl shadow-2xl flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(0,240,200,0.6)]" />
+                <span className="text-[10px] font-bold text-text-primary uppercase tracking-[0.1em]">Active Generation: Kling v2</span>
+              </div>
+
+              <div className="relative rounded-2xl overflow-hidden border border-white/5 shadow-glow-violet bg-elevated group">
+                {/* Mock Browser Toolbar */}
+                <div className="h-10 px-4 bg-elevated border-b border-white/5 flex items-center justify-between">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
                   </div>
+                  <div className="flex-1 max-w-xs mx-auto h-6 bg-void/40 rounded-md border border-white/5 flex items-center justify-center">
+                    <span className="text-[10px] text-text-ghost font-mono">promptedit.com/generate</span>
+                  </div>
+                  <div className="w-12" /> {/* Spacer */}
+                </div>
+
+                <div className="relative">
+                  {/* Bottom Gradient Fade */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-void via-void/60 to-transparent z-10" />
+                  
+                  <img 
+                    src={heroImg} 
+                    alt="PromptEdit Dashboard" 
+                    className="w-full h-auto scale-[1.01] group-hover:scale-[1.03] transition-transform duration-1000 block"
+                  />
                 </div>
               </div>
 
