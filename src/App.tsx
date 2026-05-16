@@ -345,22 +345,22 @@ const FAQItem = ({ q, a, index }: { q: string, a: string, index: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       className={`group rounded-2xl bg-elevated border transition-all duration-500 overflow-hidden ${
-        isOpen ? 'border-primary' : 'border-white/5 hover:border-white/10'
+        isOpen ? 'border-primary/40 shadow-glow-violet' : 'border-white/5 hover:border-white/10'
       }`}
     >
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 flex items-center justify-between text-left"
+        className="w-full py-5 px-6 flex items-center justify-between text-left group/btn"
       >
-        <span className="font-sans font-bold text-text-primary pr-8">{q}</span>
+        <span className="font-sans font-medium text-text-primary text-[17px] pr-8 transition-colors group-hover/btn:text-primary">{q}</span>
         <motion.div
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-            isOpen ? 'bg-primary text-text-primary' : 'bg-white/5 text-text-ghost'
+          className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
+            isOpen ? 'bg-primary text-text-primary' : 'bg-void text-primary border border-white/5'
           }`}
         >
-          <Plus size={18} />
+          <Plus size={20} />
         </motion.div>
       </button>
       
@@ -372,8 +372,10 @@ const FAQItem = ({ q, a, index }: { q: string, a: string, index: number }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
-            <div className="px-6 pb-6 text-text-secondary text-sm leading-relaxed max-w-xl">
-              {a}
+            <div className="px-6 pt-3 pb-5 max-w-2xl">
+              <p className="text-text-secondary text-[15px] leading-[1.7] border-l-2 border-primary pl-4">
+                {a}
+              </p>
             </div>
           </motion.div>
         )}
@@ -1272,8 +1274,11 @@ export default function App() {
         <FadeDivider from="from-surface" to="to-surface" />
 
         {/* Section F: FAQ */}
-        <section id="faq" className="py-24 md:py-32 bg-surface overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
+        <section id="faq" className="py-24 md:py-32 bg-void relative overflow-hidden">
+          {/* Subtle Atmosphere Gradient */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(124,92,252,0.06)_0%,transparent_60%)] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="text-center mb-16">
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-secondary mb-4 block">
                 COMMON QUESTIONS
@@ -1281,10 +1286,16 @@ export default function App() {
               <h2 className="font-syne text-4xl font-bold text-text-primary">Everything you need to know.</h2>
             </div>
 
-            <div className="max-w-2xl mx-auto space-y-4">
+            <div className="max-w-2xl mx-auto space-y-2">
               {faqs.map((faq, i) => (
                 <FAQItem key={i} {...faq} index={i} />
               ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="text-text-secondary text-sm">
+                Still have questions? <a href="#" className="text-secondary font-bold hover:underline decoration-2 underline-offset-4 decoration-secondary/30 transition-all">Chat with us →</a>
+              </p>
             </div>
           </div>
         </section>
