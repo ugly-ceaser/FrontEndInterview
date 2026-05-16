@@ -647,6 +647,11 @@ export default function App() {
               <button className="px-8 py-4 rounded-full font-bold text-lg text-text-secondary border border-subtle hover:text-text-primary hover:border-text-primary/20 transition-all duration-300">
                 Watch How It Works <span className="ml-2">▶</span>
               </button>
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full whitespace-nowrap hidden sm:block">
+                <p className="text-text-ghost text-[10px] font-bold uppercase tracking-[0.3em]">
+                  No monthly commitments • Cancel anytime
+                </p>
+              </div>
             </motion.div>
 
             {/* Social Proof */}
@@ -990,8 +995,8 @@ export default function App() {
                 }`}
               >
                 <div className="mb-8">
-                  <span className="px-3 py-1 rounded-full bg-white/5 text-[10px] font-bold text-text-ghost uppercase tracking-wider mb-4 inline-block">
-                    Best for Starters
+                  <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-[10px] font-bold text-secondary uppercase tracking-widest mb-4 inline-block">
+                    No Monthly Commitments
                   </span>
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="font-syne text-5xl font-bold text-text-primary">$98</span>
