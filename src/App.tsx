@@ -2,6 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, animate, useMotionValue, useSpring, useMotionTemplate, useReducedMotion } from 'framer-motion';
 import { Menu, X, ChevronRight, ChevronDown, Check, Zap, ShieldCheck, Wallet, Star, Plus, Youtube, Instagram, Twitter } from 'lucide-react';
 
+import heroImg from './assets/hero.png';
+import veoImg from './assets/veo.png';
+import klingImg from './assets/kling.png';
+import nanobananaImg from './assets/nanobanana.png';
+import fluxImg from './assets/flux.png';
+import ideogramImg from './assets/ideogram.png';
+import grokImg from './assets/grok.png';
+import libraryImg from './assets/library.png';
+
 
 
 
@@ -88,12 +97,12 @@ const FadeDivider = ({ from = "bg-void", to = "bg-surface" }: { from?: string, t
 
 
 const showcaseTools = [
-  { id: 1, name: 'Veo', category: 'Video', icon: '🎬', desc: 'Google DeepMind text-to-video', tags: ['Text-to-Video', 'Cinematic'], price: '0.12' },
-  { id: 2, name: 'Kling', category: 'Video', icon: '🦙', desc: 'Realistic motion video gen', tags: ['High-Fidelity', 'Pro'], price: '0.15' },
-  { id: 3, name: 'Nano Banana Pro', category: 'Video', icon: '🍌', desc: 'Fast short-form video', tags: ['Social', 'Fast'], price: '0.08' },
-  { id: 4, name: 'Flux', category: 'Image', icon: '🖼️', desc: 'Ultra-realistic image gen', tags: ['Stable Diffusion', 'Art'], price: '0.05' },
-  { id: 5, name: 'Ideogram', category: 'Image', icon: '🎨', desc: 'Text-in-image specialist', tags: ['Typography', 'Layout'], price: '0.05' },
-  { id: 6, name: 'Grok Aurora', category: 'Image', icon: '💎', desc: 'Creative image gen', tags: ['X.ai', 'Modern'], price: '0.04' },
+  { id: 1, name: 'Veo', category: 'Video', icon: '🎬', desc: 'Google DeepMind text-to-video', tags: ['Text-to-Video', 'Cinematic'], price: '0.12', image: veoImg },
+  { id: 2, name: 'Kling', category: 'Video', icon: '🦙', desc: 'Realistic motion video gen', tags: ['High-Fidelity', 'Pro'], price: '0.15', image: klingImg },
+  { id: 3, name: 'Nano Banana Pro', category: 'Video', icon: '🍌', desc: 'Fast short-form video', tags: ['Social', 'Fast'], price: '0.08', image: nanobananaImg },
+  { id: 4, name: 'Flux', category: 'Image', icon: '🖼️', desc: 'Ultra-realistic image gen', tags: ['Stable Diffusion', 'Art'], price: '0.05', image: fluxImg },
+  { id: 5, name: 'Ideogram', category: 'Image', icon: '🎨', desc: 'Text-in-image specialist', tags: ['Typography', 'Layout'], price: '0.05', image: ideogramImg },
+  { id: 6, name: 'Grok Aurora', category: 'Image', icon: '💎', desc: 'Creative image gen', tags: ['X.ai', 'Modern'], price: '0.04', image: grokImg },
   { id: 7, name: 'ElevenLabs', category: 'Audio', icon: '🔊', desc: 'AI voice cloning & voiceovers', tags: ['Voice', 'HQ'], price: '0.02' },
   { id: 8, name: 'Suno', category: 'Audio', icon: '🎵', desc: 'AI music generation', tags: ['Music', 'Full Songs'], price: '0.05' },
   { id: 9, name: 'HeyGen', category: 'Audio', icon: '🎭', desc: 'AI avatar video', tags: ['Avatar', 'Lip-sync'], price: '0.50' },
@@ -183,20 +192,28 @@ const ToolCard = ({ tool, index }: { tool: typeof showcaseTools[0], index: numbe
     >
     {/* Preview Zone */}
     <div className="aspect-video relative bg-surface overflow-hidden">
-      <div className={`absolute inset-0 opacity-40 ${
-        tool.category === 'Video' ? 'bg-gradient-to-br from-indigo-900 to-black' :
-        tool.category === 'Image' ? 'bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-indigo-500 via-purple-500 to-pink-500' :
-        'bg-void'
-      }`} />
+      {tool.image ? (
+        <img 
+          src={tool.image} 
+          alt={tool.name} 
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+      ) : (
+        <div className={`absolute inset-0 opacity-40 ${
+          tool.category === 'Video' ? 'bg-gradient-to-br from-indigo-900 to-black' :
+          tool.category === 'Image' ? 'bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-indigo-500 via-purple-500 to-pink-500' :
+          'bg-void'
+        }`} />
+      )}
       
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         {tool.category === 'Video' && (
-          <div className="w-16 h-16 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+          <div className="w-16 h-16 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-primary group-hover:scale-110 transition-transform shadow-2xl">
             <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-current border-b-[10px] border-b-transparent ml-1" />
           </div>
         )}
         {tool.category === 'Audio' && <Waveform />}
-        {tool.category === 'Image' && (
+        {tool.category === 'Image' && !tool.image && (
           <div className="w-full h-full opacity-20" style={{ 
             backgroundImage: `radial-gradient(circle at 2px 2px, var(--accent-primary) 1px, transparent 0)`,
             backgroundSize: '24px 24px'
@@ -653,6 +670,34 @@ export default function App() {
               <p className="text-text-ghost text-sm font-medium tracking-wide uppercase">
                 Join 43,943 creators already inside
               </p>
+            </motion.div>
+
+            {/* Hero Dashboard Preview */}
+            <motion.div
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
+              className="mt-24 w-full max-w-6xl relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-surface group">
+                <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent z-10 opacity-60" />
+                <img 
+                  src={heroImg} 
+                  alt="PromptEdit Dashboard" 
+                  className="w-full h-auto scale-[1.01] group-hover:scale-[1.03] transition-transform duration-1000"
+                />
+                
+                {/* Floating UI Elements on top of image */}
+                <div className="absolute top-10 left-10 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hidden md:block">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full bg-secondary animate-pulse" />
+                    <span className="text-[10px] font-bold text-text-primary uppercase tracking-widest">Active Generation: Kling v2</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative elements behind the image */}
+              <div className="absolute -inset-4 bg-primary/20 blur-3xl -z-10 rounded-full opacity-30" />
             </motion.div>
           </div>
 
@@ -1179,12 +1224,12 @@ export default function App() {
                   <Zap size={18} fill="black" /> Preview Library
                 </button>
               </div>
-              <div className="grid grid-cols-6 gap-2 w-full h-full opacity-30 grayscale group-hover:grayscale-0 transition-all duration-700">
-                {[...Array(12)].map((_, i) => (
-                  <div key={i} className="bg-elevated h-full w-full relative overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${i % 2 === 0 ? 'from-primary/20' : 'from-secondary/20'} to-void`} />
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 md:grid-cols-6 gap-2 w-full h-full opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">
+                <img 
+                  src={libraryImg} 
+                  alt="Template Library" 
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
