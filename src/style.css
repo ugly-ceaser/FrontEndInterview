@@ -1,8 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Syne:wght@400..800&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@theme {
+  --color-void: #050508;
+  --color-surface: #0d0d14;
+  --color-elevated: #13131f;
+  --color-primary: #7c5cfc;
+  --color-secondary: #00f0c8;
+  --color-fire: #ff6b35;
+  --color-text-primary: #f0eeff;
+  --color-text-secondary: #8b8aaa;
+  --color-text-ghost: #3d3d5c;
+
+  --font-syne: "Syne", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-glow-violet: 0 0 60px rgba(124, 92, 252, 0.3);
+  --shadow-glow-teal: 0 0 40px rgba(0, 240, 200, 0.2);
+}
 
 :root {
   --bg-void: #050508;
@@ -23,12 +40,10 @@
     scroll-padding-top: 80px;
   }
   body {
-    background-color: var(--bg-void);
-    color: var(--text-primary);
-    font-family: 'DM Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    background-color: var(--color-void);
+    color: var(--color-text-primary);
+    @apply antialiased overflow-x-hidden;
+    font-family: var(--font-sans);
   }
 
   ::selection {
