@@ -9,89 +9,17 @@ import { showcaseTools } from './data/tools';
 import { testimonials } from './data/testimonials';
 import { faqs } from './data/faqs';
 
+import { NavLink } from './components/ui/NavLink';
+import { ScrollProgress } from './components/ui/ScrollProgress';
+import { CursorGlow } from './components/ui/CursorGlow';
+import { Particles } from './components/ui/Particles';
+import { FadeDivider } from './components/ui/FadeDivider';
 
 
 
 
 
-const NavLink = ({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) => (
-  <a href={href} className="nav-link text-sm font-medium" onClick={onClick}>
-    {children}
-  </a>
-);
 
-const ScrollProgress = ({ scaleX }: { scaleX: any }) => (
-  <motion.div 
-    className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary z-[100] origin-left"
-    style={{ scaleX }}
-  />
-);
-
-const CursorGlow = () => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  const isReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
-
-  if (isReducedMotion) return null;
-
-  return (
-    <motion.div
-      className="fixed inset-0 pointer-events-none z-[90] hidden lg:block"
-      style={{
-        background: useMotionTemplate`radial-gradient(120px circle at ${springX}px ${springY}px, rgba(124,92,252,0.15), transparent 80%)`
-      }}
-    />
-  );
-};
-
-const Particles = ({ count = 20 }: { count?: number }) => {
-  const isReducedMotion = useReducedMotion();
-  if (isReducedMotion) return null;
-
-  return (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      {[...Array(count)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-white"
-          initial={{ 
-            x: `${Math.random() * 100}%`, 
-            y: `${Math.random() * 100}%`,
-            opacity: Math.random() * 0.5 + 0.2
-          }}
-          animate={{ 
-            y: [null, '-20px', '0px'],
-            opacity: [null, 0.7, 0.3]
-          }}
-          transition={{ 
-            duration: Math.random() * 10 + 10, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-          style={{
-            backgroundColor: i % 3 === 0 ? 'var(--accent-primary)' : i % 3 === 1 ? 'var(--accent-secondary)' : 'white',
-            filter: 'blur(1px)'
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-const FadeDivider = ({ from = "bg-void", to = "bg-surface" }: { from?: string, to?: string }) => (
-  <div className={`h-20 w-full bg-gradient-to-b ${from} ${to} pointer-events-none`} />
-);
 
 
 
