@@ -688,14 +688,8 @@ export default function App() {
               initial={{ y: 60, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
-              className="mt-12 w-full max-w-6xl relative px-4"
+              className="mt-12 w-full max-w-4xl mx-auto relative px-4 overflow-hidden"
             >
-              {/* Active Generation Badge Pill (Overlapping) */}
-              <div className="absolute -top-3 left-10 z-30 px-3 py-1.5 rounded-full bg-surface border border-white/10 backdrop-blur-xl shadow-2xl flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(0,240,200,0.6)]" />
-                <span className="text-[10px] font-bold text-text-primary uppercase tracking-[0.1em]">Active Generation: Kling v2</span>
-              </div>
-
               <div className="relative rounded-2xl overflow-hidden border border-white/5 shadow-glow-violet bg-elevated group">
                 {/* Mock Browser Toolbar */}
                 <div className="h-10 px-4 bg-elevated border-b border-white/5 flex items-center justify-between">
@@ -707,17 +701,23 @@ export default function App() {
                   <div className="flex-1 max-w-xs mx-auto h-6 bg-void/40 rounded-md border border-white/5 flex items-center justify-center">
                     <span className="text-[10px] text-text-ghost font-mono">promptedit.com/generate</span>
                   </div>
-                  <div className="w-12" /> {/* Spacer */}
+                  <div className="w-12" />
                 </div>
 
-                <div className="relative">
+                <div className="relative aspect-video max-h-[220px] sm:max-h-[320px] lg:max-h-[480px]">
+                  {/* Active Generation Badge Pill (Internal) */}
+                  <div className="absolute top-3 left-3 z-30 px-3 py-1.5 rounded-full bg-surface/80 border border-white/10 backdrop-blur-xl shadow-2xl flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-secondary animate-pulse shadow-[0_0_8px_rgba(0,240,200,0.6)]" />
+                    <span className="text-[10px] font-bold text-text-primary uppercase tracking-[0.1em]">Active Generation: Kling v2</span>
+                  </div>
+
                   {/* Bottom Gradient Fade */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-void via-void/60 to-transparent z-10" />
+                  <div className="absolute inset-x-0 bottom-0 h-[80px] bg-gradient-to-t from-void to-transparent z-10" />
                   
                   <img 
                     src={heroImg} 
                     alt="PromptEdit Dashboard" 
-                    className="w-full h-auto scale-[1.01] group-hover:scale-[1.03] transition-transform duration-1000 block"
+                    className="w-full h-full object-cover object-center scale-[1.01] group-hover:scale-[1.03] transition-transform duration-1000 block"
                   />
                 </div>
               </div>
