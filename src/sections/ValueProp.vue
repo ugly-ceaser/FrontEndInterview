@@ -16,8 +16,8 @@ import { X, Check, Zap } from 'lucide-vue-next';
       </div>
 
       <div class="grid md:grid-cols-2 gap-12 relative items-center">
-        <!-- VS Badge -->
-        <div class="flex absolute left-1/2 top-[48%] md:top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-elevated border border-white/10 items-center justify-center z-20 font-syne font-bold text-text-ghost text-xs md:text-base shadow-2xl">
+        <!-- VS Badge (Desktop Only) -->
+        <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-elevated border border-white/10 items-center justify-center z-30 font-syne font-bold text-text-ghost text-base shadow-2xl">
           VS
         </div>
 
@@ -67,6 +67,13 @@ import { X, Check, Zap } from 'lucide-vue-next';
               <span class="text-red-500 font-syne text-2xl font-bold">~$252/month</span>
             </div>
             <p class="text-red-900/60 text-xs font-medium">And you still don't own the content.</p>
+          </div>
+        </div>
+
+        <!-- VS Badge (Mobile Only) -->
+        <div class="flex md:hidden justify-center items-center z-20 my-[-24px]">
+          <div class="w-12 h-12 rounded-full bg-elevated border border-white/10 flex items-center justify-center font-syne font-bold text-text-ghost text-xs shadow-2xl">
+            VS
           </div>
         </div>
 
